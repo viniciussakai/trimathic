@@ -1,61 +1,30 @@
 import styled from "@emotion/native";
 
-import { Merge } from "type-fest";
+import { createBox } from "@shopify/restyle";
+import { Theme } from "@/styles/theme";
 
-import { ViewProps } from "react-native/types";
-import {
-  BorderProps,
-  ColorProps,
-  LayoutProps,
-  SpaceProps,
-  border,
-  color,
-  height,
-  layout,
-  space,
-} from "styled-system";
-
-export const View = styled.View`
-  display: flex;
-  ${layout};
-  ${color};
-  ${space};
-  ${border}
-`;
-
-export const Box = styled.View`
-  display: flex;
-  ${layout};
-  ${color};
-  ${space};
-  ${border}
-`;
-
-export const Column = styled(Box)``;
-Column.defaultProps = {
+export const Container = createBox<Theme>();
+Container.defaultProps = {
   flex: 1,
-  flexDirection: "column",
 };
 
-export const Row = styled(Box)``;
-Row.defaultProps = {
+export const Box = createBox<Theme>();
+Box.defaultProps = {
   flex: 1,
+};
+
+export const Row = createBox<Theme>();
+Row.defaultProps = {
   flexDirection: "row",
 };
 
-export const Separator = styled.View`
-  ${space};
-  ${color};
-  ${height};
-  width: 80%;
-`;
-
-Separator.defaultProps = {
-  height: 1,
-  bg: "neutral.300",
+export const Column = createBox<Theme>();
+Column.defaultProps = {
+  flexDirection: "column",
 };
 
-export const Center = styled(Box)`
-  align-items: center;
-  justify-content: center;
-`;
+export const Center = createBox<Theme>();
+Center.defaultProps = {
+  alignItems: "center",
+  justifyContent: "center",
+};

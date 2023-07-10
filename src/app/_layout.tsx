@@ -1,9 +1,9 @@
 import { fonts } from "@/constants/fonts";
 import { useFonts } from "expo-font";
-import { Slot, SplashScreen, Stack } from "expo-router";
+import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
 
-import { ThemeProvider } from "@emotion/react";
+import { ThemeProvider } from "@shopify/restyle";
 import { theme } from "@/styles/theme";
 
 export { ErrorBoundary } from "expo-router";
