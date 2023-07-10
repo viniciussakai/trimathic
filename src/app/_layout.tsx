@@ -1,16 +1,12 @@
 import { fonts } from "@/constants/fonts";
 import { useFonts } from "expo-font";
-import { SplashScreen, Stack } from "expo-router";
+import { Slot, SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
 
 import { ThemeProvider } from "@emotion/react";
 import { theme } from "@/styles/theme";
 
 export { ErrorBoundary } from "expo-router";
-
-export const unstable_settings = {
-  initialRouteName: "(tabs)",
-};
 
 export default function RootLayout() {
   const [loaded, error] = useFonts(fonts);
@@ -30,9 +26,7 @@ export default function RootLayout() {
 function RootLayoutNav() {
   return (
     <ThemeProvider theme={theme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      </Stack>
+      <Stack screenOptions={{ headerShown: false }}></Stack>
     </ThemeProvider>
   );
 }

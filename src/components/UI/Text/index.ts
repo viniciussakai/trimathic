@@ -25,7 +25,7 @@ Text.defaultProps = {
 export const Heading = styled(Text)``;
 
 Heading.defaultProps = {
-  letterSpacing: -2,
+  letterSpacing: 0,
   fontSize: "dmd",
   fontWeight: "bold",
   color: "neutral.900",

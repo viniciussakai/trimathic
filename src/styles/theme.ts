@@ -59,7 +59,7 @@ export const theme = {
       900: "#7A2E0E",
     },
 
-    sucess: {
+    success: {
       25: "#F6FEF9",
       50: "#ECFDF3",
       100: "#D1FADF",
