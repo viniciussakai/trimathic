@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { FlatList } from "react-native-gesture-handler";
-import { Box, Button, Row, Text } from "../UI";
+import { Button, Text, Card, Box, Row } from "../UI";
 import { SlideItem } from "./slide";
 import { Animated } from "react-native";
 import { SlideIndicator } from "./indicator";
@@ -39,11 +39,11 @@ export function Onboarding() {
 
   return (
     <Box
-      borderTopLeftRadius={50}
-      borderTopRightRadius={50}
       flex={0.8}
-      py={6}
-      bg="primary.500"
+      backgroundColor="cardPrimaryBackground"
+      borderTopLeftRadius={"xxl"}
+      borderTopRightRadius={"xxl"}
+      paddingVertical="xl"
     >
       <FlatList
         data={slides}
@@ -57,27 +57,29 @@ export function Onboarding() {
         renderItem={({ item }) => <SlideItem item={item} />}
       />
 
-      <Row justifyContent="center" flex={0}>
+      <Row justifyContent="center" marginBottom="lg">
         {slides.map((_, index) =>
           index === currentIndex ? (
-            <SlideIndicator key={index} bg="neutral.200" width={25} />
+            <SlideIndicator key={index} active />
           ) : (
             <SlideIndicator key={index} />
           )
         )}
       </Row>
 
-      <Row alignItems="center" justifyContent="space-between" px={10}>
-        <Button borderWidth={1} borderColor="neutral.100">
-          <Text color="neutral.50" fontSize="md">
-            Registre-se
-          </Text>
-        </Button>
-        <Button bg="neutral.100" px={10}>
-          <Text color="primary.500" fontSize="md">
-            Login
-          </Text>
-        </Button>
+      <Row
+        justifyContent="space-between"
+        alignItems="center"
+        paddingHorizontal="lg"
+      >
+        <Button variant="ghost" label="Registre-se" onPress={() => {}} />
+        <Button
+          variant="white"
+          label="Login"
+          paddingHorizontal="xxl"
+          onPress={() => {}}
+          textProps={{ variant: "buttonWhiteLabel" }}
+        />
       </Row>
     </Box>
   );

@@ -1,7 +1,7 @@
 import React from "react";
-import { View, useWindowDimensions } from "react-native";
+import { useWindowDimensions } from "react-native";
 
-import { Box, Heading, Text } from "../UI";
+import { Box, Text } from "../UI";
 
 interface SlidesItemProps {
   item: {
@@ -14,11 +14,16 @@ export const SlideItem = ({ item }: SlidesItemProps) => {
   const { width } = useWindowDimensions();
 
   return (
-    <Box width={width} bg={"primary.500"} px={6} justifyContent="center">
-      <Heading fontSize="dsm" color="neutral.50" mb={3}>
+    <Box
+      width={width}
+      backgroundColor="cardPrimaryBackground"
+      padding={"xl"}
+      justifyContent="center"
+    >
+      <Text variant="heading" textAlign="center" marginBottom={"md"}>
         {item.title}
-      </Heading>
-      <Text color="neutral.300" textAlign="center">
+      </Text>
+      <Text variant="paragraphWhite" textAlign="center">
         {item.paragraph}
       </Text>
     </Box>

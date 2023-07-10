@@ -1,36 +1,24 @@
-import styled from "@emotion/native";
-import { border, color, layout, space } from "styled-system";
+import { Theme } from "@/styles/theme";
+import { createBox } from "@shopify/restyle";
+import { ImageBackground, Image as IM } from "react-native";
 
-export const ImageBox = styled.ImageBackground`
-  ${space};
-  ${layout};
-  ${color};
-  ${border};
-
-  width: 100%;
-  height: 100%;
-
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-`;
+export const ImageBox = createBox<
+  Theme,
+  React.ComponentProps<typeof ImageBackground>
+>(ImageBackground);
 
 ImageBox.defaultProps = {
   flex: 1,
   alignItems: "center",
   justifyContent: "center",
+  width: "100%",
+  height: "100%",
 };
 
-export const Image = styled.Image`
-  ${space};
-  ${layout};
-  ${color};
-  ${border};
-`;
+export const Image = createBox<Theme, React.ComponentProps<typeof IM>>(IM);
 
 Image.defaultProps = {
   flex: 1,
-
   alignItems: "center",
   justifyContent: "center",
 };

@@ -1,17 +1,18 @@
-import { Box, Column, Row, Separator, View } from "./Box";
-import { Text, Heading } from "./Text";
+import { Box, Center, Column, Container, Row } from "./Box";
+import { Text } from "./Text";
 import { Image, ImageBox } from "./Image";
 import { Button } from "./Button";
+import { Card } from "./Card";
 
 export {
   Box,
+  Center,
   Column,
-  Heading,
+  Container,
   Row,
-  Separator,
   Text,
   Image,
   ImageBox,
-  View,
   Button,
+  Card,
 };

@@ -1,119 +1,124 @@
-export const theme = {
+import { createTheme } from "@shopify/restyle";
+import { pallete } from "./pallete";
+import { fontSizes, fontFamily } from "./font";
+
+export const theme = createTheme({
   colors: {
-    white: "#FFFFFF",
-    black: "#000000",
+    mainBackground: pallete.neutral[25],
+    textDisplay: pallete.neutral[900],
+    textParagraph: pallete.neutral[900],
+    textWhiteParagraph: pallete.neutral[200],
+    cardPrimaryBackground: pallete.primary[500],
+    constrastText: pallete.neutral[25],
+    textPrimary: pallete.primary[500],
+
+    indicator: pallete.neutral[300],
+    indicatorActive: pallete.neutral[100],
+    transparent: "transparent",
+  },
+
+  spacing: {
+    xs: 4,
+    sm: 8,
+    md: 16,
+    lg: 24,
+    xl: 32,
+    xxl: 40,
+  },
+
+  borderRadii: {
+    xs: 4,
+    sm: 8,
+    md: 16,
+    lg: 24,
+    xl: 32,
+    xxl: 40,
+  },
+
+  textVariants: {
+    defaults: {
+      fontFamily: fontFamily.normal,
+    },
+    display: {
+      fontFamily: fontFamily.black,
+      fontSize: fontSizes.dlg,
+      color: "textDisplay",
+    },
+
+    heading: {
+      fontFamily: fontFamily.bold,
+      fontSize: fontSizes.dxs,
+      color: "constrastText",
+    },
+
+    paragraph: {
+      fontFamily: fontFamily.normal,
+      fontSize: fontSizes.lg,
+      color: "textParagraph",
+    },
+
+    paragraphWhite: {
+      fontFamily: fontFamily.normal,
+      fontSize: fontSizes.lg,
+      color: "textWhiteParagraph",
+    },
+
+    buttonLabel: {
+      fontFamily: fontFamily.bold,
+      fontSize: fontSizes.lg,
+      color: "constrastText",
+    },
+
+    buttonWhiteLabel: {
+      fontFamily: fontFamily.bold,
+      fontSize: fontSizes.lg,
+      color: "textPrimary",
+    },
+  },
+  cardVariants: {
+    defaults: {},
+    regular: {
+      padding: "md",
+      borderRadius: 8,
+      backgroundColor: "mainBackground",
+    },
 
     primary: {
-      25: "#F5FBFF",
-      50: "#F0F9FF",
-      100: "#E0F2FE",
-      200: "#B9E6FE",
-      300: "#7CD4FD",
-      400: "#36BFFA",
-      500: "#0BA5EC",
-      600: "#0086C9",
-      700: "#026AA2",
-      800: "#065986",
-      900: "#0B4A6F",
+      padding: "md",
+      borderRadius: 8,
+      backgroundColor: "cardPrimaryBackground",
     },
 
-    neutral: {
-      25: "#FCFCFD",
-      50: "#F9FAFB",
-      100: "#F2F4F7",
-      200: "#EAECF0",
-      300: "#D0D5DD",
-      400: "#98A2B3",
-      500: "#667085",
-      600: "#475467",
-      700: "#344054",
-      800: "#1D2939",
-      900: "#0D1829",
-    },
-
-    error: {
-      25: "#FFFBFA",
-      50: "#FFF6F4",
-      100: "#FFECE6",
-      200: "#FFD0C9",
-      300: "#FFA69B",
-      400: "#FF7C6D",
-      500: "#FF5A4A",
-      600: "#DB3A2F",
-      700: "#B7262A",
-      800: "#931D2A",
-      900: "#7A1729",
-    },
-
-    warning: {
-      25: "#FFFCF5",
-      50: "#FFFAEB",
-      100: "#FEF0C7",
-      200: "#FEDF89",
-      300: "#FEC84B",
-      400: "#FDB022",
-      500: "#F79009",
-      600: "#DC6803",
-      700: "#B54708",
-      800: "#93370D",
-      900: "#7A2E0E",
-    },
-
-    success: {
-      25: "#F6FEF9",
-      50: "#ECFDF3",
-      100: "#D1FADF",
-      200: "#A6F4C5",
-      300: "#6CE9A6",
-      400: "#32D583",
-      500: "#12B76A",
-      600: "#039855",
-      700: "#027A48",
-      800: "#05603A",
-      900: "#054F31",
+    elevated: {
+      shadowColor: "#000",
+      shadowOpacity: 0.2,
+      shadowOffset: { width: 0, height: 5 },
+      shadowRadius: 15,
+      elevation: 5,
     },
   },
 
-  fontSizes: {
-    xs: 12,
-    sm: 14,
-    md: 16,
-    lg: 18,
-    xl: 20,
+  buttonVariants: {
+    defaults: {
+      paddingHorizontal: "lg",
+      paddingVertical: "sm",
+      borderRadius: "sm",
+    },
+    primary: {
+      backgroundColor: "cardPrimaryBackground",
+    },
 
-    dxs: 24,
-    dsm: 30,
-    dmd: 36,
-    dlg: 48,
-    dxl: 60,
-    d2xl: 72,
-  },
+    white: {
+      backgroundColor: "constrastText",
+    },
 
-  fontWeight: {
-    thin: "Poppins_100Thin",
-    normal: "Poppins_400Regular",
-    medium: "Poppins_500Medium",
-    bold: "Poppins_700Bold",
-    black: "Poppins_900Black",
+    ghost: {
+      backgroundColor: "transparent",
+      borderWidth: 1,
+      borderColor: "constrastText",
+    },
   },
+});
 
-  space: {
-    1: 4,
-    2: 8,
-    3: 12,
-    4: 16,
-    5: 20,
-    6: 24,
-    8: 32,
-    10: 40,
-    12: 48,
-    16: 64,
-    20: 80,
-    24: 96,
-    32: 128,
-    40: 160,
-    48: 192,
-    56: 224,
-    64: 256,
-  },
-};
+export type Theme = typeof theme;
+export default theme;
