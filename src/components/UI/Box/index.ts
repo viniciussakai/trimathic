@@ -2,16 +2,18 @@ import styled from "@emotion/native";
 
 import { createBox } from "@shopify/restyle";
 import { Theme } from "@/styles/theme";
+import { SafeAreaView } from "react-native";
 
-export const Container = createBox<Theme>();
+export const Container = createBox<
+  Theme,
+  React.ComponentProps<typeof SafeAreaView>
+>(SafeAreaView);
 Container.defaultProps = {
   flex: 1,
+  backgroundColor: "mainBackground",
 };
 
 export const Box = createBox<Theme>();
-Box.defaultProps = {
-  flex: 1,
-};
 
 export const Row = createBox<Theme>();
 Row.defaultProps = {

@@ -1,4 +1,4 @@
-import { ImageBox, Image, Text, Box, Container } from "@/components/UI";
+import { ImageBox, Image, Text, Container } from "@/components/UI";
 import LeafSource from "@/assets/images/leaf_effect.png";
 import Logo from "@/assets/images/logo.png";
 
@@ -10,12 +10,12 @@ export default function Welcome() {
   return (
     <Container>
       <StatusBar style="dark" />
-      <Box paddingTop="xxl">
+      <Container paddingTop="xxl">
         <ImageBox source={LeafSource}>
           <Image source={Logo} maxWidth={180} maxHeight={180} />
           <Text variant="display">TRIMATHIC</Text>
         </ImageBox>
-      </Box>
+      </Container>
       <Onboarding />
     </Container>
   );

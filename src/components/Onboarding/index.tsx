@@ -4,6 +4,7 @@ import { Button, Text, Card, Box, Row } from "../UI";
 import { SlideItem } from "./slide";
 import { Animated } from "react-native";
 import { SlideIndicator } from "./indicator";
+import { Link } from "expo-router";
 
 const slides = [
   {
@@ -72,14 +73,18 @@ export function Onboarding() {
         alignItems="center"
         paddingHorizontal="lg"
       >
-        <Button variant="ghost" label="Registre-se" onPress={() => {}} />
-        <Button
-          variant="white"
-          label="Login"
-          paddingHorizontal="xxl"
-          onPress={() => {}}
-          textProps={{ variant: "buttonWhiteLabel" }}
-        />
+        <Link href="/register" asChild>
+          <Button variant="ghostWhite" label="Registre-se" onPress={() => {}} />
+        </Link>
+        <Link href="/login" asChild>
+          <Button
+            variant="white"
+            label="Login"
+            paddingHorizontal="xxl"
+            onPress={() => {}}
+            textProps={{ variant: "buttonWhiteLabel" }}
+          />
+        </Link>
       </Row>
     </Box>
   );
