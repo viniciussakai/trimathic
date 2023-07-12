@@ -4,7 +4,7 @@ import { fontSizes, fontFamily } from "./font";
 
 export const theme = createTheme({
   colors: {
-    mainBackground: pallete.neutral[25],
+    mainBackground: pallete.white,
     textDisplay: pallete.neutral[900],
     textParagraph: pallete.neutral[900],
     textWhiteParagraph: pallete.neutral[200],
@@ -15,6 +15,16 @@ export const theme = createTheme({
     indicator: pallete.neutral[300],
     indicatorActive: pallete.neutral[100],
     transparent: "transparent",
+
+    inputLabel: pallete.neutral[700],
+
+    primary: pallete.primary[500],
+    secundary: pallete.neutral[200],
+
+    inputBackground: pallete.neutral[100],
+    inputText: pallete.neutral[700],
+
+    secundaryText: pallete.neutral[700],
   },
 
   spacing: {
@@ -67,12 +77,36 @@ export const theme = createTheme({
       fontFamily: fontFamily.bold,
       fontSize: fontSizes.lg,
       color: "constrastText",
+      alignSelf: "center",
     },
 
     buttonWhiteLabel: {
       fontFamily: fontFamily.bold,
       fontSize: fontSizes.lg,
       color: "textPrimary",
+      alignSelf: "center",
+    },
+
+    buttonGhostLabel: {
+      fontFamily: fontFamily.bold,
+      fontSize: fontSizes.lg,
+      color: "textPrimary",
+      alignSelf: "center",
+    },
+
+    buttonSecundaryLabel: {
+      fontFamily: fontFamily.bold,
+      fontSize: fontSizes.lg,
+      color: "secundaryText",
+      alignSelf: "center",
+    },
+
+    inputLabel: {
+      fontFamily: fontFamily.bold,
+      fontSize: fontSizes.md,
+      color: "inputLabel",
+      marginBottom: "xs",
+      paddingHorizontal: "xs",
     },
   },
   cardVariants: {
@@ -101,8 +135,9 @@ export const theme = createTheme({
   buttonVariants: {
     defaults: {
       paddingHorizontal: "lg",
-      paddingVertical: "sm",
+      paddingVertical: "md",
       borderRadius: "sm",
+      marginBottom: "sm",
     },
     primary: {
       backgroundColor: "cardPrimaryBackground",
@@ -114,8 +149,18 @@ export const theme = createTheme({
 
     ghost: {
       backgroundColor: "transparent",
+      borderWidth: 2,
+      borderColor: "primary",
+    },
+
+    ghostWhite: {
+      backgroundColor: "transparent",
       borderWidth: 1,
       borderColor: "constrastText",
+    },
+
+    secundary: {
+      backgroundColor: "secundary",
     },
   },
 });
