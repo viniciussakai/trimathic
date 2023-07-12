@@ -29,7 +29,7 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
 ]);
 
 type Props = RestyleProps & {
-  onPress: () => void;
+  onPress?: () => void;
   label: string;
   textProps?: TextProps<Theme>;
 };
