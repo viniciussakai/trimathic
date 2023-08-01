@@ -15,18 +15,19 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true
-    },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.trimathic.trimathic"
     },
     "web": {
       "bundler": "metro",
       "favicon": "./src/assets/favicon.png"
+    },
+    "ios": {
+      "bundleIdentifier": "com.trimathic.trimathic"
     }
   }
 }

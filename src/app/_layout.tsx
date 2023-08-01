@@ -5,6 +5,7 @@ import { useEffect } from "react";
 
 import { ThemeProvider } from "@shopify/restyle";
 import { theme } from "@/styles/theme";
+import { RealmProvider } from "@/database";
 
 export { ErrorBoundary } from "expo-router";
 
@@ -26,7 +27,9 @@ export default function RootLayout() {
 function RootLayoutNav() {
   return (
     <ThemeProvider theme={theme}>
-      <Stack screenOptions={{ headerShown: false }}></Stack>
+      <RealmProvider>
+        <Stack screenOptions={{ headerShown: false }}></Stack>
+      </RealmProvider>
     </ThemeProvider>
   );
 }
