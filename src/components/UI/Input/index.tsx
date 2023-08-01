@@ -2,7 +2,6 @@ import { Feather } from "@expo/vector-icons";
 import React, { useState } from "react";
 import { TextInputProps } from "react-native";
 import { Container, IconContainer, InputContainer, InputText } from "./styles";
-import { Box } from "../Box";
 import { Text } from "../Text";
 import theme from "@/styles/theme";
 

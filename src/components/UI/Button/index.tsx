@@ -15,6 +15,7 @@ import {
 
 import { Text } from "../Text";
 import { Theme } from "@/styles/theme";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 type RestyleProps = SpacingProps<Theme> &
   BorderProps<Theme> &
@@ -32,9 +33,10 @@ type Props = RestyleProps & {
   onPress?: () => void;
   label: string;
   textProps?: TextProps<Theme>;
+  icon?: string;
 };
 
-export const Button = ({ onPress, label, textProps, ...rest }: Props) => {
+export const Button = ({ onPress, label, textProps, icon, ...rest }: Props) => {
   const props = useRestyle(restyleFunctions, rest);
 
   return (
@@ -43,6 +45,12 @@ export const Button = ({ onPress, label, textProps, ...rest }: Props) => {
         <Text variant="buttonLabel" {...textProps}>
           {label}
         </Text>
+
+        {icon && (
+          <Text variant="buttonLabel" {...textProps}>
+            <FontAwesome5 name={icon} size={16} />
+          </Text>
+        )}
       </View>
     </TouchableOpacity>
   );
