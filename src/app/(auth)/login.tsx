@@ -1,15 +1,54 @@
-import { Box, Button, Center, Container, Image, Text } from "@/components/UI";
-import { Input } from "@/components/UI/Input";
-import React from "react";
 import {
+  Button,
+  Center,
+  Container,
+  ControledInput,
+  Image,
+  Text,
+} from "@/components/UI";
+import React, { useContext } from "react";
+import {
+  Alert,
   Keyboard,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
 } from "react-native";
 
 import Logo from "@/assets/images/logo.png";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import { useRouter } from "expo-router";
+import { userLoginValidator } from "@/utils/validations/users";
+import AuthService from "@/services/auth";
+import { useAuth } from "@/context/auth";
+
+type FormData = {
+  email: string;
+  password: string;
+};
 
 export default function Login() {
+  const router = useRouter();
+  const { signIn } = useAuth();
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: yupResolver(userLoginValidator),
+  });
+
+  const handleLogin = async ({ email, password }: FormData) => {
+    try {
+      signIn(await AuthService.login({ email, password }));
+      router.replace("/(tabs)/learn");
+    } catch (error) {
+      Alert.alert("Erro", "Usuário ou senha incorretos");
+    }
+  };
+
   return (
     <Container padding="lg" justifyContent="center">
       <Center flex={0.7}>
@@ -18,22 +57,34 @@ export default function Login() {
       </Center>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <KeyboardAvoidingView>
-          <Input icon="user" label="Usuario" placeholder="Pedro Pedrosa" />
-          <Input
+          <ControledInput
+            control={control}
+            name="email"
+            icon="user"
+            label="Usuario"
+            placeholder="Pedro Pedrosa"
+            error={errors.email}
+          />
+          <ControledInput
+            control={control}
+            name="password"
             icon="lock"
             label="Senha"
             placeholder="Segredo"
             secureTextEntry
+            error={errors.password}
           />
-          <Text fontWeight="bold" marginBottom="lg">
-            Esqueceu sua Senha?
-          </Text>
 
-          <Button variant="primary" label="Entrar" />
+          <Button
+            variant="primary"
+            label="Entrar"
+            onPress={handleSubmit(handleLogin)}
+          />
           <Button
             variant="secundary"
             label="Registre-se"
             textProps={{ variant: "buttonSecundaryLabel" }}
+            onPress={() => router.push("/register")}
           />
         </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
