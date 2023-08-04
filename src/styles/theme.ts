@@ -7,7 +7,7 @@ export const theme = createTheme({
     mainBackground: pallete.white,
     textDisplay: pallete.neutral[900],
     textParagraph: pallete.neutral[900],
-    textWhiteParagraph: pallete.neutral[200],
+    textWhiteParagraph: pallete.neutral[100],
     cardPrimaryBackground: pallete.primary[500],
     constrastText: pallete.neutral[25],
     textPrimary: pallete.primary[500],
@@ -25,6 +25,11 @@ export const theme = createTheme({
     inputText: pallete.neutral[700],
 
     secundaryText: pallete.neutral[700],
+
+    greenSection: pallete.green,
+    greenDarkBorder: pallete.greenDark,
+
+    errorText: pallete.error[400],
   },
 
   spacing: {
@@ -34,6 +39,8 @@ export const theme = createTheme({
     lg: 24,
     xl: 32,
     xxl: 40,
+
+    unitSpacing: 100,
   },
 
   borderRadii: {
@@ -48,6 +55,8 @@ export const theme = createTheme({
   textVariants: {
     defaults: {
       fontFamily: fontFamily.normal,
+      color: "textParagraph",
+      fontSize: fontSizes.md,
     },
     display: {
       fontFamily: fontFamily.black,
@@ -63,40 +72,40 @@ export const theme = createTheme({
 
     paragraph: {
       fontFamily: fontFamily.normal,
-      fontSize: fontSizes.lg,
+      fontSize: fontSizes.md,
       color: "textParagraph",
     },
 
     paragraphWhite: {
       fontFamily: fontFamily.normal,
-      fontSize: fontSizes.lg,
+      fontSize: fontSizes.md,
       color: "textWhiteParagraph",
     },
 
     buttonLabel: {
       fontFamily: fontFamily.bold,
-      fontSize: fontSizes.lg,
+      fontSize: fontSizes.md,
       color: "constrastText",
       alignSelf: "center",
     },
 
     buttonWhiteLabel: {
       fontFamily: fontFamily.bold,
-      fontSize: fontSizes.lg,
+      fontSize: fontSizes.md,
       color: "textPrimary",
       alignSelf: "center",
     },
 
     buttonGhostLabel: {
       fontFamily: fontFamily.bold,
-      fontSize: fontSizes.lg,
+      fontSize: fontSizes.md,
       color: "textPrimary",
       alignSelf: "center",
     },
 
     buttonSecundaryLabel: {
       fontFamily: fontFamily.bold,
-      fontSize: fontSizes.lg,
+      fontSize: fontSizes.md,
       color: "secundaryText",
       alignSelf: "center",
     },
@@ -107,6 +116,12 @@ export const theme = createTheme({
       color: "inputLabel",
       marginBottom: "xs",
       paddingHorizontal: "xs",
+    },
+
+    error: {
+      fontFamily: fontFamily.bold,
+      fontSize: fontSizes.sm,
+      color: "errorText",
     },
   },
   cardVariants: {
@@ -135,9 +150,13 @@ export const theme = createTheme({
   buttonVariants: {
     defaults: {
       paddingHorizontal: "lg",
-      paddingVertical: "md",
+      paddingVertical: "sm",
       borderRadius: "sm",
       marginBottom: "sm",
+      flexDirection: "row",
+      gap: "sm",
+      alignItems: "center",
+      justifyContent: "center",
     },
     primary: {
       backgroundColor: "cardPrimaryBackground",
@@ -161,6 +180,14 @@ export const theme = createTheme({
 
     secundary: {
       backgroundColor: "secundary",
+    },
+
+    green: {
+      backgroundColor: "greenSection",
+      borderWidth: 2,
+      borderBottomWidth: 4,
+      borderColor: "greenDarkBorder",
+      paddingVertical: "xs",
     },
   },
 });

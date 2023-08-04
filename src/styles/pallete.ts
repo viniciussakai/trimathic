@@ -71,4 +71,7 @@ export const pallete = {
     800: "#05603A",
     900: "#054F31",
   },
+
+  green: "#1EB688",
+  greenDark: "#18926D",
 };

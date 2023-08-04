@@ -11,11 +11,11 @@ interface Props {
 export const Container = styled.View`
   flex-direction: column;
   width: 100%;
+  margin-bottom: 8px;
 `;
 
 export const InputContainer = styled.View`
   flex-direction: row;
-  margin-bottom: 16px;
 `;
 
 export const IconContainer = styled.View<Props>`
