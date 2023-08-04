@@ -1,25 +1,13 @@
-import { Realm } from "@realm/react";
+import { Model } from "@nozbe/watermelondb";
+import { date, readonly, text } from "@nozbe/watermelondb/decorators";
 
-class User extends Realm.Object<User> {
-  _id!: string;
-  name!: string;
-  email!: string;
-  password!: string;
-  createdAt!: Date;
+export class User extends Model {
+  static table = "users";
 
-  static schema = {
-    name: "User",
+  @text("email") email!: string;
+  @text("name") name!: string;
+  @text("password") password!: string;
 
-    properties: {
-      _id: "string",
-      name: "string",
-      email: "string",
-      password: "string",
-      createdAt: "date",
-    },
-
-    primaryKey: "_id",
-  };
+  @readonly @date("created_at") createdAt!: number;
+  @readonly @date("updated_at") updatedAt!: number;
 }
-
-export default User;

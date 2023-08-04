@@ -16,6 +16,7 @@ import expo.modules.ApplicationLifecycleDispatcher;
 import expo.modules.ReactNativeHostWrapper;
 
 import java.util.List;
+import com.nozbe.watermelondb.WatermelonDBPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 

@@ -1,9 +1,22 @@
-import User from "./models/User";
+import { Platform } from "react-native";
+import { Database } from "@nozbe/watermelondb";
+import SQLiteAdapter from "@nozbe/watermelondb/adapters/sqlite";
 
-import { createRealmContext } from "@realm/react";
+import schema from "./schema/index";
+import { User } from "./models/User";
 
-export const RealmContext = createRealmContext({
-  schema: [User],
+// First, create the adapter to the underlying database:
+const adapter = new SQLiteAdapter({
+  schema,
+  // jsi: true,
+  dbName: "TrimathicDb",
+
+  onSetUpError: (error) => {
+    console.error("[DB] Database failed to load:", error);
+  },
 });
 
-export const { RealmProvider, useObject, useQuery, useRealm } = RealmContext;
+export const database = new Database({
+  adapter,
+  modelClasses: [User],
+});
