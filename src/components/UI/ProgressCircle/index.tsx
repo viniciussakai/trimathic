@@ -1,6 +1,6 @@
 import React from "react";
 
-import { View, I18nManager, StyleSheetProperties } from "react-native";
+import { View, I18nManager, StyleProp, ViewStyle } from "react-native";
 import { computeDerivedState } from "./utils";
 import { generateStyles } from "./styles";
 
@@ -15,8 +15,8 @@ type ProgressProps = {
   direction?: "left" | "right";
   percent: number;
   children?: React.ReactNode;
-  containerStyle?: StyleSheetProperties;
-  outerCircleStyle?: StyleSheetProperties;
+  containerStyle?: StyleProp<ViewStyle>;
+  outerCircleStyle?: StyleProp<ViewStyle>;
 };
 
 export const ProgressCircle = ({
