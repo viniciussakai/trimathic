@@ -81,8 +81,8 @@ export const ProgressCircle = ({
             height: radiusMinusBorder * 2,
             borderRadius: radiusMinusBorder,
             backgroundColor: bgColor,
-            ...containerStyle,
           },
+          containerStyle,
         ]}
       >
         {children}
@@ -99,8 +99,8 @@ export const ProgressCircle = ({
           height: radius * 2,
           borderRadius: radius,
           backgroundColor: shadowColor,
-          ...outerCircleStyle,
         },
+        outerCircleStyle,
       ]}
     >
       {renderHalfCircle({ rotateDegrees: halfCircle1Degree })}
