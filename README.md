@@ -37,8 +37,7 @@
 
 ## 💻 Sobre o projeto
 
-♻️ Ecoleta - é uma forma de conectar empresas e entidades de coleta de resíduos orgânicos e inorgânicos as pessoas que precisam descartar seus resíduos de maneira ecológica.
-
+♻️ Trimathic - é uma forma de aprender de uma forma divertida atravez de demonstrações mtemáticas.
 
 Projeto desenvolvido durante a **TCC do Curso de Desenvolvimento de Sistema** oferecida pela [EtecVAV](https://www.etecvav.com.br).
 O TCC é uma experiência de colocar o conteúdo em prática, se propor a novos desafios, etc.
