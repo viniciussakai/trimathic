@@ -1,6 +1,6 @@
 import { createTheme } from "@shopify/restyle";
+import { fontFamily, fontSizes } from "./font";
 import { pallete } from "./pallete";
-import { fontSizes, fontFamily } from "./font";
 
 export const theme = createTheme({
   colors: {
@@ -28,8 +28,10 @@ export const theme = createTheme({
 
     greenSection: pallete.green,
     greenDarkBorder: pallete.greenDark,
+    greenLight: pallete.success[100],
+    errorText: pallete.error[900],
 
-    errorText: pallete.error[400],
+    errorSection: pallete.error[100],
   },
 
   spacing: {
@@ -187,6 +189,14 @@ export const theme = createTheme({
       borderWidth: 2,
       borderBottomWidth: 4,
       borderColor: "greenDarkBorder",
+      paddingVertical: "xs",
+    },
+
+    error: {
+      backgroundColor: "errorText",
+      borderWidth: 2,
+      borderBottomWidth: 4,
+      borderColor: "errorText",
       paddingVertical: "xs",
     },
   },
