@@ -3,10 +3,11 @@ import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
 
-import { ThemeProvider } from "@shopify/restyle";
 import { theme } from "@/styles/theme";
+import { ThemeProvider } from "@shopify/restyle";
 
 import { AuthProvider } from "@/context/auth";
+import { StatusBar } from "expo-status-bar";
 
 export { ErrorBoundary } from "expo-router";
 
@@ -29,6 +30,7 @@ function RootLayoutNav() {
   return (
     <ThemeProvider theme={theme}>
       <AuthProvider>
+        <StatusBar style="dark" />
         <Stack screenOptions={{ headerShown: false }} />
       </AuthProvider>
     </ThemeProvider>

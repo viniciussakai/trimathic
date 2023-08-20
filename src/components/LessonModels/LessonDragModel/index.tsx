@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { StatusBar } from "react-native";
 
-import { Column } from "@/components/UI";
+import { Column, Text } from "@/components/UI";
 import { DraxProvider } from "react-native-drax";
 
 import { shuffleArray } from "@/utils/array";
 
 import { LessonFooter } from "../lessonFooter";
-import { LessonHeader } from "../lessonHeader";
 import { DragContainer } from "./dragContainer";
 import { DropContainer } from "./dropContainer";
 
 type LessonDragModelProps = {
+  title: string;
   image?: any;
   answer: string[];
   questionOptions: string[];
@@ -21,14 +21,16 @@ type LessonDragModelProps = {
     rotation?: number;
   }[];
   nextLesson?: string;
+  handleNextLesson?: Function;
 };
 
 export default function LessonDragModel({
   answer,
   questionOptions,
   questionBoxes,
+  title,
   image,
-
+  handleNextLesson,
   nextLesson,
 }: LessonDragModelProps) {
   const [usefulItems, setUsefulItems] = useState(shuffleArray(questionOptions));
@@ -78,11 +80,16 @@ export default function LessonDragModel({
   return (
     <DraxProvider>
       <StatusBar barStyle="dark-content" />
-      <Column flex={1} alignItems="center" p="sm" mt="xxl">
-        <LessonHeader
-          title="Arraste para o lugar correspondente"
-          progress={90}
-        />
+      <Column flex={1} alignItems="center" p="sm">
+        <Text
+          variant="heading"
+          textAlign="center"
+          color="textParagraph"
+          mt="md"
+        >
+          {title}
+        </Text>
+
         <DropContainer
           image={image}
           questionBoxes={questionBoxes}
@@ -96,6 +103,7 @@ export default function LessonDragModel({
         incorrect={incorrect}
         nextLesson={nextLesson}
         handleIncorrect={handleTryAgain}
+        handleNextLesson={handleNextLesson}
       />
     </DraxProvider>
   );

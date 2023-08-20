@@ -1,11 +1,14 @@
 import React from "react";
-import { Column, Container, Row, Text } from "@/components/UI";
-import { ScrollView } from "react-native";
-import { HomeHero } from "@/components/HomeHero";
-import { UnitTitle } from "@/components/UnitTitle";
+
 import { CheckPoint } from "@/components/CheckPoint";
+import { HomeHero } from "@/components/HomeHero";
+import { Column, Container, Row, Text } from "@/components/UI";
+import { UnitTitle } from "@/components/UnitTitle";
+import { useRouter } from "expo-router";
+import { ScrollView } from "react-native";
 
 export default function TabLearn() {
+  const router = useRouter();
   return (
     <ScrollView showsVerticalScrollIndicator={false} bounces={false}>
       <Container>
@@ -21,14 +24,25 @@ export default function TabLearn() {
 
         <Column paddingHorizontal="unitSpacing">
           <Row justifyContent="flex-end">
-            <CheckPoint icon="book-open" />
+            <CheckPoint
+              icon="book-open"
+              onPress={() => router.push("/lesson/unit1/class1")}
+            />
           </Row>
 
           <Row justifyContent="center">
-            <CheckPoint icon="star" active percent={50} />
+            <CheckPoint
+              icon="star"
+              active
+              percent={50}
+              onPress={() => router.push("/lesson/unit1/class2")}
+            />
           </Row>
           <Row justifyContent="flex-start">
-            <CheckPoint icon="trophy" />
+            <CheckPoint
+              icon="trophy"
+              onPress={() => router.push("/lesson/unit1/class3")}
+            />
           </Row>
         </Column>
       </Container>

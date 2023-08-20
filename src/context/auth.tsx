@@ -1,7 +1,9 @@
-import { useRouter, useSegments } from "expo-router";
 import React, { useState } from "react";
 
 import { User } from "@/database/models/User";
+import AuthService from "@/services/auth";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useRouter, useSegments } from "expo-router";
 
 type AuthValues = {
   signIn: (authUser: User) => void;
@@ -30,18 +32,56 @@ function useProtectedRoute(user: User) {
   }, [user, segments]);
 }
 
-export function AuthProvider(props: { children: React.ReactNode }) {
-  const [user, setAuth] = useState<User>();
+const checkIfUserIsLogged = async () => {
+  try {
+    const hasUserId = await AsyncStorage.getItem("trimathic:user.id");
 
-  useProtectedRoute(user as User);
+    if (hasUserId) {
+      const user = await AuthService.getUserById(hasUserId);
+
+      return {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+      };
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const setLocalUser = async (user: User) => {
+  try {
+    await AsyncStorage.setItem("trimathic:user.id", user.id.toString());
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const removeLocalUser = async () => {
+  try {
+    await AsyncStorage.removeItem("trimathic:user.id");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export function AuthProvider(props: { children: React.ReactNode }) {
+  const [user, setAuth] = useState<any>(checkIfUserIsLogged());
+
+  useProtectedRoute(user);
 
   return (
     <AuthContext.Provider
       value={{
         signIn: (authUser) => {
           setAuth(authUser);
+          setLocalUser(authUser);
         },
-        signOut: () => setAuth(undefined),
+        signOut: () => {
+          setAuth(undefined);
+          removeLocalUser();
+        },
         user,
       }}
     >

@@ -1,12 +1,15 @@
-import { Redirect, useRouter } from "expo-router";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useEffect, useState } from "react";
 import { Text } from "@/components/UI";
+import { initializeLessons } from "@/services/lessons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useRouter } from "expo-router";
+import { useEffect } from "react";
 
 export default function Index() {
   const router = useRouter();
 
   const isFirstTimeOpen = async () => {
+    await AsyncStorage.clear();
+
     const isFirstTimeOpen = await AsyncStorage.getItem(
       "trimathic:isFirstTimeOpen"
     );
@@ -14,16 +17,15 @@ export default function Index() {
   };
 
   useEffect(() => {
-    AsyncStorage.clear();
-
     isFirstTimeOpen().then(async (isFirstTimeOpen) => {
       console.log("primeira vez abrindo o app", isFirstTimeOpen);
+      initializeLessons().then(() => console.log("lessons initialized"));
 
       if (isFirstTimeOpen) {
         AsyncStorage.setItem("trimathic:isFirstTimeOpen", "false");
         router.replace("/(auth)/welcome");
       } else {
-        router.replace("/(auth)/login");
+        router.replace("/learn");
       }
     });
   }, []);

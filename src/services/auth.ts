@@ -54,6 +54,15 @@ class AuthService {
       throw new Error(error);
     }
   }
+
+  async getUserById(id: string) {
+    try {
+      const user = await database.get<User>("users").find(id);
+      return user;
+    } catch (error: any) {
+      throw new Error(error);
+    }
+  }
 }
 
 export default new AuthService();
