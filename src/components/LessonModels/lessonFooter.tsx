@@ -4,7 +4,6 @@ import { Box, Button, Text } from "../UI";
 type LessonFooter = {
   correct: boolean;
   incorrect: boolean;
-  nextLesson?: string;
   handleIncorrect: Function;
   handleNextLesson?: Function;
 };
@@ -12,7 +11,6 @@ type LessonFooter = {
 export function LessonFooter({
   correct,
   incorrect,
-  nextLesson,
   handleIncorrect,
   handleNextLesson,
 }: LessonFooter) {
@@ -30,14 +28,14 @@ export function LessonFooter({
           minWidth={360}
         >
           <Text fontWeight="900" color="greenSection" fontSize={22}>
-            {nextLesson
+            {handleNextLesson
               ? "Parabéns! Você acertou!"
               : "Parabéns! Você terminou o módulo!"}
           </Text>
 
           <Button
             variant="green"
-            label={nextLesson ? "Proxima Lição" : "Voltar para as Lições"}
+            label={handleNextLesson ? "Proxima Lição" : "Voltar para as Lições"}
             textProps={{ variant: "buttonLabel" }}
             onPress={() => (handleNextLesson ? handleNextLesson() : {})}
           />

@@ -1,11 +1,11 @@
 import Retangle from "@/assets/images/lessons/hollo_retangle.png";
-import { LessonDragModel } from "@/components/LessonModels/";
+import { LessonQuiz, Recomendation } from "@/components/LessonModels";
 import { LessonHeader } from "@/components/LessonModels/lessonHeader";
 import { Box } from "@/components/UI";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 
-export default function class1() {
+export default function class4() {
   const [activeScreen, setActiveScreen] = useState(0);
   const [progress, setProgress] = useState(0);
   const router = useRouter();
@@ -25,15 +25,12 @@ export default function class1() {
   };
 
   const screens = [
-    LessonDragModel({
-      title: "Arraste as palavras para os locais corretos",
-      answer: ["Altura", "Base"],
-      questionOptions: ["Altura", "Base"],
+    Recomendation({ handleNextLesson }),
+    LessonQuiz({
+      title: "Lesson",
       image: Retangle,
-      questionBoxes: [
-        { x: -30, y: 175, rotation: -90 },
-        { x: 90, y: 355, rotation: 0 },
-      ],
+      answer: "189 cm²",
+      questionOptions: ["189 cm²", "198 cm²", "200 cm²"],
       handleNextLesson,
     }),
   ];

@@ -1,9 +1,9 @@
 import { useRouter } from "expo-router";
 import { useState } from "react";
 
-import { LessonExplanatory } from "@/components/LessonModels/LessonExplanatory";
+import { LessonExplanatory } from "@/components/LessonModels/";
 import { LessonHeader } from "@/components/LessonModels/lessonHeader";
-import { Box, Button, Image, Text } from "@/components/UI";
+import { Box, Image, Text } from "@/components/UI";
 
 import Equation2_1 from "@/assets/images/lessons/equation2-1.png";
 import Explication2_1 from "@/assets/images/lessons/explanation2-1.png";
@@ -52,7 +52,6 @@ export default function class2() {
           rotation: 0,
         },
       ],
-      nextLesson: "/lesson/unit1/class3",
       handleNextLesson,
     }),
 
@@ -67,29 +66,9 @@ export default function class2() {
             Observe abaixo a equação que representa a demonstração a cima.
           </Text>
           <Image source={Equation2_1} maxHeight={80} resizeMode="contain" />
-
-          <Box
-            bg="greenLight"
-            p="lg"
-            mb="xxl"
-            minHeight={150}
-            justifyContent="space-between"
-            borderRadius="md"
-          >
-            <Text fontWeight="900" color="greenSection" fontSize={22}>
-              "Parabéns! Você terminou o módulo!
-            </Text>
-
-            <Button
-              variant="green"
-              label={"Voltar para as Lições"}
-              textProps={{ variant: "buttonLabel" }}
-              onPress={() => handleNextLesson()}
-              marginBottom="md"
-            />
-          </Box>
         </>
       ),
+      handleNextLesson,
     }),
   ];
 

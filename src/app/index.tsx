@@ -1,5 +1,5 @@
 import { Text } from "@/components/UI";
-import { initializeLessons } from "@/services/lessons";
+
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRouter } from "expo-router";
 import { useEffect } from "react";
@@ -18,9 +18,6 @@ export default function Index() {
 
   useEffect(() => {
     isFirstTimeOpen().then(async (isFirstTimeOpen) => {
-      console.log("primeira vez abrindo o app", isFirstTimeOpen);
-      initializeLessons().then(() => console.log("lessons initialized"));
-
       if (isFirstTimeOpen) {
         AsyncStorage.setItem("trimathic:isFirstTimeOpen", "false");
         router.replace("/(auth)/welcome");

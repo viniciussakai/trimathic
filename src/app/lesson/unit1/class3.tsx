@@ -1,6 +1,6 @@
 import { LessonExplanatory } from "@/components/LessonModels/LessonExplanatory";
 import { LessonHeader } from "@/components/LessonModels/lessonHeader";
-import { Box, Button, Image, Text } from "@/components/UI";
+import { Box, Image, Text } from "@/components/UI";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 
@@ -10,6 +10,7 @@ import Equation2_1 from "@/assets/images/lessons/equation2-1.png";
 import Equation3_1 from "@/assets/images/lessons/equation3-1.png";
 import Retangle from "@/assets/images/lessons/hollo_retangle.png";
 import Triangle from "@/assets/images/lessons/triangle.png";
+import { LessonQuiz, Recomendation } from "@/components/LessonModels";
 
 export default function class3() {
   const [activeScreen, setActiveScreen] = useState(0);
@@ -70,29 +71,17 @@ export default function class3() {
             resizeMode="contain"
             mb="xxl"
           />
-
-          <Box
-            bg="greenLight"
-            p="lg"
-            mb="xxl"
-            minHeight={150}
-            justifyContent="space-between"
-            borderRadius="md"
-          >
-            <Text fontWeight="900" color="greenSection" fontSize={22}>
-              "Parabéns! Você terminou o módulo!
-            </Text>
-
-            <Button
-              variant="green"
-              label={"Voltar para as Lições"}
-              textProps={{ variant: "buttonLabel" }}
-              onPress={() => handleNextLesson()}
-              marginBottom="md"
-            />
-          </Box>
         </>
       ),
+      handleNextLesson,
+    }),
+    Recomendation({ handleNextLesson }),
+    LessonQuiz({
+      title: "Lesson",
+      image: Retangle,
+      answer: "189 cm²",
+      questionOptions: ["189 cm²", "198 cm²", "200 cm²"],
+      handleNextLesson,
     }),
   ];
 

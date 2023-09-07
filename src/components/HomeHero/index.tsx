@@ -1,5 +1,3 @@
-import React from "react";
-
 import { useAuth } from "@/context/auth";
 import { Box, Image, Text } from "../UI";
 import { styles } from "./styles";

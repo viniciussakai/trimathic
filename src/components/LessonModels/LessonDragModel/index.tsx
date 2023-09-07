@@ -20,7 +20,6 @@ type LessonDragModelProps = {
     y: number;
     rotation?: number;
   }[];
-  nextLesson?: string;
   handleNextLesson?: Function;
 };
 
@@ -31,7 +30,6 @@ export default function LessonDragModel({
   title,
   image,
   handleNextLesson,
-  nextLesson,
 }: LessonDragModelProps) {
   const [usefulItems, setUsefulItems] = useState(shuffleArray(questionOptions));
   const [answerItems, setAnswerItems] = useState(
@@ -101,7 +99,6 @@ export default function LessonDragModel({
       <LessonFooter
         correct={correct}
         incorrect={incorrect}
-        nextLesson={nextLesson}
         handleIncorrect={handleTryAgain}
         handleNextLesson={handleNextLesson}
       />
