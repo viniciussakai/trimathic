@@ -5,18 +5,17 @@ import { useRouter } from "expo-router";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 import { ProgressBar } from "../ProgressBar";
-import { Row, Text } from "../UI";
+import { Row } from "../UI";
 
 type LessonHeaderProps = {
   progress: number;
-  title: string;
 };
 
-export function LessonHeader({ progress, title }: LessonHeaderProps) {
+export function LessonHeader({ progress }: LessonHeaderProps) {
   const router = useRouter();
   return (
     <>
-      <Row alignItems="center">
+      <Row alignItems="center" p="sm">
         <TouchableOpacity onPress={() => router.replace("/learn")}>
           <Icon name="x" size={24} />
         </TouchableOpacity>
@@ -28,9 +27,6 @@ export function LessonHeader({ progress, title }: LessonHeaderProps) {
           }}
         />
       </Row>
-      <Text variant="heading" textAlign="center" color="textParagraph" mt="md">
-        {title}
-      </Text>
     </>
   );
 }

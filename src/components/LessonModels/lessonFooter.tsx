@@ -1,30 +1,19 @@
-import { useRouter } from "expo-router";
 import React from "react";
 import { Box, Button, Text } from "../UI";
 
 type LessonFooter = {
   correct: boolean;
   incorrect: boolean;
-  nextLesson?: string;
   handleIncorrect: Function;
+  handleNextLesson?: Function;
 };
 
 export function LessonFooter({
   correct,
   incorrect,
-  nextLesson,
   handleIncorrect,
+  handleNextLesson,
 }: LessonFooter) {
-  const router = useRouter();
-
-  const handleNextLesson = () => {
-    if (nextLesson) {
-      router.replace(nextLesson);
-    } else {
-      router.replace("/learn");
-    }
-  };
-
   return (
     <>
       {correct && (
@@ -36,18 +25,19 @@ export function LessonFooter({
           p="lg"
           justifyContent="space-between"
           borderRadius="md"
+          minWidth={360}
         >
           <Text fontWeight="900" color="greenSection" fontSize={22}>
-            {nextLesson
+            {handleNextLesson
               ? "Parabéns! Você acertou!"
               : "Parabéns! Você terminou o módulo!"}
           </Text>
 
           <Button
             variant="green"
-            label={nextLesson ? "Proxima Lição" : "Voltar para as Lições"}
+            label={handleNextLesson ? "Proxima Lição" : "Voltar para as Lições"}
             textProps={{ variant: "buttonLabel" }}
-            onPress={() => handleNextLesson()}
+            onPress={() => (handleNextLesson ? handleNextLesson() : {})}
           />
         </Box>
       )}

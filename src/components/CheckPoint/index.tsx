@@ -1,17 +1,18 @@
-import React from "react";
-import { ProgressCircle } from "../UI/ProgressCircle";
 import { FontAwesome5 } from "@expo/vector-icons";
-import { Box, Text } from "../UI";
+import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { Box, Text } from "../UI";
+import { ProgressCircle } from "../UI/ProgressCircle";
 import { styles } from "./styles";
 
 type Props = {
   icon: string;
   active?: boolean;
   percent?: number;
+  onPress?: () => void;
 };
 
-export function CheckPoint({ icon, active, percent = 0 }: Props) {
+export function CheckPoint({ icon, active, percent = 0, onPress }: Props) {
   const Item = () => {
     return (
       <Box
@@ -36,7 +37,7 @@ export function CheckPoint({ icon, active, percent = 0 }: Props) {
   };
 
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPress}>
       <Box alignItems="center" marginVertical={active ? "lg" : "sm"}>
         {active ? (
           <ProgressCircle

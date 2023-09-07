@@ -40,6 +40,11 @@
         }
       ],
       "@morrowdigital/watermelondb-expo-plugin"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "d6fdea5a-98bb-4b04-9fe4-d918fdfb1ac6"
+      }
+    }
   }
 }

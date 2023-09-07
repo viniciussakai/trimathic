@@ -21,7 +21,7 @@ export function DropContainer({
   return (
     <>
       <View style={{ position: "relative", padding: 50, margin: 30 }}>
-        <Image source={image} maxHeight={300} resizeMode="cover" />
+        <Image source={image} maxHeight={300} resizeMode="contain" />
         {questionBoxes.map((box, index) => (
           <DroppableBox
             onDrop={onDrop(index)}

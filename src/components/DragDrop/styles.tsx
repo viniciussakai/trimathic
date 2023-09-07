@@ -1,6 +1,6 @@
-import { StyleSheet } from "react-native";
-import theme from "@/styles/theme";
 import { pallete } from "@/styles/pallete";
+import theme from "@/styles/theme";
+import { StyleSheet } from "react-native";
 const colors = theme.colors;
 
 export const styles = StyleSheet.create({
@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
   normalStyle: {
     padding: 10,
     minWidth: 100,
-    backgroundColor: colors.primary,
+    backgroundColor: "#2E477C",
     borderRadius: 5,
   },
 
