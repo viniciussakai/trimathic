@@ -1,10 +1,10 @@
 import { Button, Column, Image, Text } from "@/components/UI";
 
 import ImgRecomendation from "@/assets/images/lessons/recomendation.png";
-interface IRecomendation {
-  handleNextLesson: Function;
-}
-export default function Recomendation({ handleNextLesson }: IRecomendation) {
+import { useClassStore } from "@/store";
+
+export default function Recomendation() {
+  const { increaseScreen } = useClassStore((state) => state);
   return (
     <Column padding="sm" alignItems="center" paddingTop="xl">
       <Text
@@ -27,7 +27,7 @@ export default function Recomendation({ handleNextLesson }: IRecomendation) {
         variant="primary"
         label="Continuar"
         margin="md"
-        onPress={() => handleNextLesson()}
+        onPress={() => increaseScreen()}
       />
     </Column>
   );

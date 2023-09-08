@@ -1,8 +1,6 @@
 import { LessonExplanatory } from "@/components/LessonModels/LessonExplanatory";
 import { LessonHeader } from "@/components/LessonModels/lessonHeader";
 import { Box, Image, Text } from "@/components/UI";
-import { useRouter } from "expo-router";
-import { useState } from "react";
 
 import CuttedHollowRetangle from "@/assets/images/lessons/cutted_hollow_retangle.png";
 import Cutted from "@/assets/images/lessons/cutted_retangle.png";
@@ -11,26 +9,9 @@ import Equation3_1 from "@/assets/images/lessons/equation3-1.png";
 import Retangle from "@/assets/images/lessons/hollo_retangle.png";
 import Triangle from "@/assets/images/lessons/triangle.png";
 import { LessonQuiz, Recomendation } from "@/components/LessonModels";
+import { useScreens } from "@/hooks/useScreens";
 
 export default function class3() {
-  const [activeScreen, setActiveScreen] = useState(0);
-  const [progress, setProgress] = useState(0);
-  const router = useRouter();
-
-  const handleNextLesson = () => {
-    const hasNextLesson = activeScreen + 1 < screens.length;
-
-    if (hasNextLesson) {
-      setActiveScreen(activeScreen + 1);
-      setProgress(((activeScreen + 1) * 100) / screens.length);
-      return;
-    }
-
-    setProgress(100);
-    router.replace("/learn");
-    return;
-  };
-
   const screens = [
     LessonExplanatory({
       children: (
@@ -73,17 +54,17 @@ export default function class3() {
           />
         </>
       ),
-      handleNextLesson,
     }),
-    Recomendation({ handleNextLesson }),
+    Recomendation(),
     LessonQuiz({
       title: "Lesson",
       image: Retangle,
       answer: "189 cm²",
       questionOptions: ["189 cm²", "198 cm²", "200 cm²"],
-      handleNextLesson,
     }),
   ];
+
+  const { progress, activeScreen } = useScreens(screens);
 
   return (
     <Box flex={1} alignItems="center" pt="xxl">

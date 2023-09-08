@@ -8,7 +8,6 @@ type LessonDragModelProps = {
   image?: any;
   answer: string;
   questionOptions: string[];
-  handleNextLesson?: Function;
 };
 
 export default function LessonQuiz({
@@ -16,7 +15,6 @@ export default function LessonQuiz({
   image,
   answer,
   questionOptions,
-  handleNextLesson,
 }: LessonDragModelProps) {
   const [correct, setCorrect] = useState(false);
   const [incorrect, setIncorrect] = useState(false);
@@ -52,9 +50,7 @@ export default function LessonQuiz({
       <Text variant="heading" textAlign="center" color="textParagraph">
         {title}
       </Text>
-
       <Image source={image} maxHeight={500} resizeMode="contain" />
-
       <RadioGroup
         options={questionOptions}
         selected={selected}
@@ -65,7 +61,6 @@ export default function LessonQuiz({
         correct={correct}
         incorrect={incorrect}
         handleIncorrect={handleTryAgain}
-        handleNextLesson={handleNextLesson}
       />
     </Column>
   );

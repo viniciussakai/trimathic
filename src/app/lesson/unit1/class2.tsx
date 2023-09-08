@@ -1,6 +1,3 @@
-import { useRouter } from "expo-router";
-import { useState } from "react";
-
 import { LessonExplanatory } from "@/components/LessonModels/";
 import { LessonHeader } from "@/components/LessonModels/lessonHeader";
 import { Box, Image, Text } from "@/components/UI";
@@ -9,26 +6,9 @@ import Equation2_1 from "@/assets/images/lessons/equation2-1.png";
 import Explication2_1 from "@/assets/images/lessons/explanation2-1.png";
 import Retangle from "@/assets/images/lessons/retangle.png";
 import { LessonDragModel } from "@/components/LessonModels";
+import { useScreens } from "@/hooks/useScreens";
 
 export default function class2() {
-  const [activeScreen, setActiveScreen] = useState(0);
-  const [progress, setProgress] = useState(0);
-  const router = useRouter();
-
-  const handleNextLesson = () => {
-    const hasNextLesson = activeScreen + 1 < screens.length;
-
-    if (hasNextLesson) {
-      setActiveScreen(activeScreen + 1);
-      setProgress(((activeScreen + 1) * 100) / screens.length);
-      return;
-    }
-
-    setProgress(100);
-    router.replace("/learn");
-    return;
-  };
-
   const screens = [
     LessonDragModel({
       title: "Arraste as palavras para os locais corretos",
@@ -52,7 +32,6 @@ export default function class2() {
           rotation: 0,
         },
       ],
-      handleNextLesson,
     }),
 
     LessonExplanatory({
@@ -68,9 +47,10 @@ export default function class2() {
           <Image source={Equation2_1} maxHeight={80} resizeMode="contain" />
         </>
       ),
-      handleNextLesson,
     }),
   ];
+
+  const { progress, activeScreen } = useScreens(screens);
 
   return (
     <Box flex={1} alignItems="center" pt="xxl">
