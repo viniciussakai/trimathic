@@ -1,19 +1,20 @@
+import { useClassStore } from "@/store";
 import React from "react";
 import { Box, Button, Text } from "../UI";
 
 type LessonFooter = {
-  correct: boolean;
-  incorrect: boolean;
-  handleIncorrect: Function;
-  handleNextLesson?: Function;
+  correct?: boolean;
+  incorrect?: boolean;
+  handleIncorrect?: Function;
 };
 
 export function LessonFooter({
   correct,
   incorrect,
-  handleIncorrect,
-  handleNextLesson,
+  handleIncorrect = () => {},
 }: LessonFooter) {
+  const { increaseScreen } = useClassStore((state) => state);
+
   return (
     <>
       {correct && (
@@ -28,16 +29,14 @@ export function LessonFooter({
           minWidth={360}
         >
           <Text fontWeight="900" color="greenSection" fontSize={22}>
-            {handleNextLesson
-              ? "Parabéns! Você acertou!"
-              : "Parabéns! Você terminou o módulo!"}
+            Você esta indo muito bem!!
           </Text>
 
           <Button
             variant="green"
-            label={handleNextLesson ? "Proxima Lição" : "Voltar para as Lições"}
+            label={"Proxima Lição"}
             textProps={{ variant: "buttonLabel" }}
-            onPress={() => (handleNextLesson ? handleNextLesson() : {})}
+            onPress={() => increaseScreen()}
           />
         </Box>
       )}

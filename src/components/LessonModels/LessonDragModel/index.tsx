@@ -29,7 +29,6 @@ export default function LessonDragModel({
   questionBoxes,
   title,
   image,
-  handleNextLesson,
 }: LessonDragModelProps) {
   const [usefulItems, setUsefulItems] = useState(shuffleArray(questionOptions));
   const [answerItems, setAnswerItems] = useState(
@@ -100,7 +99,6 @@ export default function LessonDragModel({
         correct={correct}
         incorrect={incorrect}
         handleIncorrect={handleTryAgain}
-        handleNextLesson={handleNextLesson}
       />
     </DraxProvider>
   );
