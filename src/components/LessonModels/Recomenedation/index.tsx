@@ -1,7 +1,7 @@
 import { Button, Column, Image, Text } from "@/components/UI";
 
 import ImgRecomendation from "@/assets/images/lessons/recomendation.png";
-import { useClassStore } from "@/store";
+import { useClassStore } from "@/context/class";
 
 export default function Recomendation() {
   const { increaseScreen } = useClassStore((state) => state);

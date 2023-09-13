@@ -1,14 +1,19 @@
-import { LessonExplanatory } from "@/components/LessonModels/";
+import {
+  LessonExplanatory,
+  LessonQuiz,
+  Recomendation,
+} from "@/components/LessonModels/";
 import { LessonHeader } from "@/components/LessonModels/lessonHeader";
 import { Box, Image, Text } from "@/components/UI";
 
-import Equation2_1 from "@/assets/images/lessons/equation2-1.png";
-import Explication2_1 from "@/assets/images/lessons/explanation2-1.png";
-import Retangle from "@/assets/images/lessons/retangle.png";
+import Equation2_1 from "@/assets/images/lessons/aula2/equation2-1.png";
+import Explication2_1 from "@/assets/images/lessons/aula2/explanation2-1.png";
+import RetangleQuiz from "@/assets/images/lessons/aula2/retan_exer.png";
+import Retangle from "@/assets/images/lessons/aula2/retangle.png";
 import { LessonDragModel } from "@/components/LessonModels";
 import { useScreens } from "@/hooks/useScreens";
 
-export default function class2() {
+export default function area_retangulo() {
   const screens = [
     LessonDragModel({
       title: "Arraste as palavras para os locais corretos",
@@ -47,6 +52,14 @@ export default function class2() {
           <Image source={Equation2_1} maxHeight={80} resizeMode="contain" />
         </>
       ),
+    }),
+    Recomendation(),
+    LessonQuiz({
+      title:
+        "Utilizando os conceitos aprendidos na unidade, calcule o valor da área do retângulo:",
+      image: RetangleQuiz,
+      answer: "189 cm²",
+      questionOptions: ["189 cm²", "198 cm²", "200 cm²"],
     }),
   ];
 

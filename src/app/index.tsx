@@ -1,35 +1,28 @@
-import { Text } from "@/components/UI";
+import { database } from "@/database";
+import { migrate } from "@/database/migration";
+import { localstorage } from "@/services/localstorage";
 
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useRouter } from "expo-router";
-import { useEffect } from "react";
+import { Redirect } from "expo-router";
+import { useEffect, useState } from "react";
 
 export default function Index() {
-  const router = useRouter();
+  const [firstTime, setFirstTime] = useState(false);
 
-  const isFirstTimeOpen = async () => {
-    await AsyncStorage.clear();
-
-    const isFirstTimeOpen = await AsyncStorage.getItem(
-      "trimathic:isFirstTimeOpen"
-    );
-    return isFirstTimeOpen === null;
+  const runDataMigrations = async () => {
+    await migrate(database);
   };
 
   useEffect(() => {
-    isFirstTimeOpen().then(async (isFirstTimeOpen) => {
-      if (isFirstTimeOpen) {
-        AsyncStorage.setItem("trimathic:isFirstTimeOpen", "false");
-        router.replace("/(auth)/welcome");
-      } else {
-        router.replace("/learn");
-      }
-    });
-  }, []);
+    if (localstorage.getString("trimathic:isFirstTimeOpen") === undefined) {
+      setFirstTime(true);
+      runDataMigrations();
+      localstorage.set("trimathic:isFirstTimeOpen", "false");
+    }
+  }, [firstTime]);
 
-  return (
-    <>
-      <Text>You are suppose to not see this page</Text>
-    </>
-  );
+  if (firstTime) {
+    return <Redirect href={"/(auth)/welcome"} />;
+  } else {
+    return <Redirect href={"/learn"} />;
+  }
 }

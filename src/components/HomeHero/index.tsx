@@ -1,11 +1,11 @@
-import { useAuth } from "@/context/auth";
+import { useAuthStore } from "@/context/auth";
 import { Box, Image, Text } from "../UI";
 import { styles } from "./styles";
 
 import LearnImage from "@/assets/images/learnImage.png";
 
 export function HomeHero() {
-  const { user } = useAuth();
+  const { user } = useAuthStore();
 
   const capitalize = (str: string) => {
     return str.charAt(0).toUpperCase() + str.slice(1);

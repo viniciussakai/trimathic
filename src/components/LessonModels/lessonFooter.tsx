@@ -1,4 +1,4 @@
-import { useClassStore } from "@/store";
+import { useClassStore } from "@/context/class";
 import React from "react";
 import { Box, Button, Text } from "../UI";
 

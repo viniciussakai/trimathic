@@ -6,7 +6,7 @@ import {
   Image,
   Text,
 } from "@/components/UI";
-import React, { useContext } from "react";
+import React from "react";
 import {
   Alert,
   Keyboard,
@@ -15,13 +15,13 @@ import {
 } from "react-native";
 
 import Logo from "@/assets/images/logo.png";
-import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 
-import { useRouter } from "expo-router";
-import { userLoginValidator } from "@/utils/validations/users";
+import { useAuthStore } from "@/context/auth";
 import AuthService from "@/services/auth";
-import { useAuth } from "@/context/auth";
+import { userLoginValidator } from "@/utils/validations/users";
+import { useRouter } from "expo-router";
 
 type FormData = {
   email: string;
@@ -30,7 +30,7 @@ type FormData = {
 
 export default function Login() {
   const router = useRouter();
-  const { signIn } = useAuth();
+  const { signIn } = useAuthStore();
 
   const {
     control,

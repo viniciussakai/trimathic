@@ -10,7 +10,7 @@ type LessonExplanatoryProps = {
 export function LessonExplanatory({ children }: LessonExplanatoryProps) {
   return (
     <ScrollView showsVerticalScrollIndicator={false} bounces={false}>
-      <Column p="sm" alignItems="center">
+      <Column alignItems="center">
         {children}
         <LessonFooter correct={true} />
       </Column>

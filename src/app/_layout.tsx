@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { theme } from "@/styles/theme";
 import { ThemeProvider } from "@shopify/restyle";
 
-import { AuthProvider } from "@/context/auth";
+import { useProtectedRoute } from "@/hooks/useProtectedRoutes";
 import { StatusBar } from "expo-status-bar";
 
 export { ErrorBoundary } from "expo-router";
@@ -27,12 +27,12 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
+  useProtectedRoute();
+
   return (
     <ThemeProvider theme={theme}>
-      <AuthProvider>
-        <StatusBar style="dark" />
-        <Stack screenOptions={{ headerShown: false }} />
-      </AuthProvider>
+      <StatusBar style="dark" />
+      <Stack screenOptions={{ headerShown: false }} />
     </ThemeProvider>
   );
 }
