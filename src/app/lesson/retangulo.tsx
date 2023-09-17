@@ -1,10 +1,10 @@
-import Retangle from "@/assets/images/lessons/hollo_retangle.png";
+import Retangle from "@/assets/images/lessons/aula1/hollo_retangle.png";
 import { LessonDragModel } from "@/components/LessonModels/";
 import { LessonHeader } from "@/components/LessonModels/lessonHeader";
 import { Box } from "@/components/UI";
 import { useScreens } from "@/hooks/useScreens";
 
-export default function class1() {
+export default function retangulo() {
   const screens = [
     LessonDragModel({
       title: "Arraste as palavras para os locais corretos",

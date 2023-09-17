@@ -1,4 +1,4 @@
-import { useClassStore } from "@/store";
+import { useClassStore } from "@/context/class";
 import React from "react";
 import { Box, Button, Text } from "../UI";
 
@@ -22,11 +22,11 @@ export function LessonFooter({
           bg="greenLight"
           flex={1}
           maxHeight={150}
-          m="md"
           p="lg"
+          mt="xl"
           justifyContent="space-between"
           borderRadius="md"
-          minWidth={360}
+          minWidth={400}
         >
           <Text fontWeight="900" color="greenSection" fontSize={22}>
             Você esta indo muito bem!!

@@ -58,9 +58,36 @@ class AuthService {
   async getUserById(id: string) {
     try {
       const user = await database.get<User>("users").find(id);
+
+      if (!user) {
+        throw new Error("Usuário não encontrado");
+      }
+
       return user;
     } catch (error: any) {
       throw new Error(error);
+    }
+  }
+
+  async update(id: string, user: User) {
+    try {
+      return await database.write(async () => {
+        const userUpdated = await this.getUserById(id);
+
+        if (!userUpdated) {
+          throw new Error("Usuário não encontrado");
+        }
+
+        await userUpdated.update((userUpdated) => {
+          userUpdated.name = user.name || userUpdated.name;
+          userUpdated.email = user.email || userUpdated.email;
+          user.password = user.password || userUpdated.password;
+        });
+
+        return userUpdated;
+      });
+    } catch (error: any) {
+      // throw new Error(error);
     }
   }
 }

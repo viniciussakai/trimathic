@@ -1,5 +1,11 @@
-import { Button, Center, Container, Image, Text } from "@/components/UI";
-import { ControledInput } from "@/components/UI";
+import {
+  Button,
+  Center,
+  Container,
+  ControledInput,
+  Image,
+  Text,
+} from "@/components/UI";
 import React from "react";
 
 import {
@@ -10,15 +16,14 @@ import {
 } from "react-native";
 
 import Logo from "@/assets/images/logo.png";
+import AuthService from "@/services/auth";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { StatusBar } from "expo-status-bar";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { userLoginValidator } from "@/utils/validations/users";
-import AuthService from "@/services/auth";
 
-import { useRouter } from "expo-router";
-import { RegisterData, userRegisterValidator } from "@/utils/validations/users";
 import { User } from "@/database/models/User";
+import { RegisterData, userRegisterValidator } from "@/utils/validations/users";
+import { useRouter } from "expo-router";
 
 export default function Register() {
   const router = useRouter();

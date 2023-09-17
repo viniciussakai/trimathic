@@ -47,7 +47,12 @@ export default function LessonQuiz({
 
   return (
     <Column alignItems="center" flex={1}>
-      <Text variant="heading" textAlign="center" color="textParagraph">
+      <Text
+        variant="heading"
+        textAlign="center"
+        color="textParagraph"
+        paddingHorizontal="md"
+      >
         {title}
       </Text>
       <Image source={image} maxHeight={500} resizeMode="contain" />

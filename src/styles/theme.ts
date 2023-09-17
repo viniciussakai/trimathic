@@ -32,6 +32,10 @@ export const theme = createTheme({
     errorText: pallete.error[900],
 
     errorSection: pallete.error[100],
+
+    redSection: "#de1451",
+    yellowSection: "#f0ba26",
+    blueSection: "#2a56c7",
   },
 
   spacing: {

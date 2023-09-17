@@ -1,23 +1,33 @@
+import { Box, Row, Text } from "@/components/UI";
 import React from "react";
-import { Box, Button, Row, Text } from "@/components/UI";
 
 type Props = {
   title: string;
   description: string;
-  bgColor?: string;
+  index: number;
 };
 
-export const UnitTitle = ({
-  title,
-  description,
-  bgColor = "greenSection",
-}: Props) => {
+const Colors: { [key: number]: string } = {
+  0: "greenSection",
+  1: "redSection",
+  2: "blueSection",
+  3: "yellowSection",
+};
+
+const getBgColor = (index: number) => {
+  const selector = (index - 1) % 4;
+  return Colors[selector];
+};
+
+export const UnitTitle = ({ title, description, index }: Props) => {
+  const bgColor = getBgColor(index);
+
   return (
     <Row
       bg={bgColor as any}
       padding="md"
       margin="sm"
-      marginBottom="xl"
+      marginTop="xl"
       borderRadius="md"
       justifyContent="space-between"
       alignItems="center"

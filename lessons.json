@@ -1,58 +1,22 @@
-{
-  "units": [
-    { "id": "#uuid", "name": "Área de figuras" },
-    { "id": "u546-5643-543-6543", "name": "Relações triângulo" }
-  ],
-
-  "lessons": [
-    {
-      "name": "retangulo",
-      "unit_id": 1,
-      "screens": [
-        { "type": "draggableExercise" },
-        { "type": "draggableExercise" }
-      ],
-      "is_completed": false
-    },
-    {
-      "name": "triangulo",
-      "unit_id": 1,
-      "screens": [
-        { "type": "explication" },
-        { "type": "draggableExercise" },
-        { "type": "recomendation" },
-        { "type": "questionExercise" }
-      ],
-      "is_completed": false
-    },
-    {
-      "name": "trapezio",
-      "unit_id": 1,
-      "screens": [
-        { "type": "explication" },
-        { "type": "recomendation" },
-        { "type": "questionExercise" }
-      ],
-      "is_completed": false
-    },
-    {
-      "name": "triangulo retangulo",
-      "unit_id": 2,
-      "screens": [
-        { "type": "explication" },
-        { "type": "draggableExercise" },
-        { "type": "explication" },
-        { "type": "explication" },
-        { "type": "recomendation" },
-        { "type": "questionExercise" }
-      ],
-      "is_completed": false
-    },
-    {
-      "name": "triangulo retangulo",
-      "unit_id": 2,
-      "screens": [{ "type": "explication" }, { "type": "explication" }],
-      "is_completed": false
-    }
-  ]
-}
+[
+  {
+    "name": "retangulo",
+    "unit_id": 1
+  },
+  {
+    "name": "triangulo",
+    "unit_id": 1
+  },
+  {
+    "name": "trapezio",
+    "unit_id": 1
+  },
+  {
+    "name": "triangulo retangulo",
+    "unit_id": 2
+  },
+  {
+    "name": "triangulo retangulo",
+    "unit_id": 2
+  }
+]
