@@ -41,7 +41,7 @@ export default function TabProfile() {
         password: data.password,
       } as User);
 
-      Alert.alert("Sucesso", "Usuario cadastrado com sucesso");
+      Alert.alert("Sucesso", "Usuario alterado com sucesso");
 
       signIn(userUpdated || user);
     } catch (error) {
@@ -51,7 +51,7 @@ export default function TabProfile() {
   };
 
   return (
-    <Container padding="sm" alignContent="center">
+    <Container padding="lg" alignContent="center" justifyContent="center">
       <Stack.Screen
         options={{
           contentStyle: {
@@ -69,60 +69,62 @@ export default function TabProfile() {
         }}
       />
 
-      <Box maxWidth={380} marginBottom="lg">
-        <Text
-          variant="heading"
-          fontSize={24}
-          fontWeight="bold"
-          textAlign="left"
-          color="textParagraph"
-          marginBottom="sm"
-        >
-          Suas Informações
-        </Text>
-        <Text variant="paragraph">
-          Nesta tela você pode alterar suas informações de perfil.
-        </Text>
+      <Box>
+        <Box maxWidth={380} marginBottom="lg">
+          <Text
+            variant="heading"
+            fontSize={24}
+            fontWeight="bold"
+            textAlign="left"
+            color="textParagraph"
+            marginBottom="sm"
+          >
+            Suas Informações
+          </Text>
+          <Text variant="paragraph">
+            Nesta tela você pode alterar suas informações de perfil.
+          </Text>
+        </Box>
+
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <KeyboardAvoidingView>
+            <ControledInput
+              control={control}
+              name="name"
+              icon="user"
+              label="Name"
+              placeholder="Pedro Pedrosa"
+              error={errors.name}
+            />
+
+            <ControledInput
+              control={control}
+              name="email"
+              icon="mail"
+              label="Email"
+              placeholder="pedro@online.com"
+              keyboardType="email-address"
+              error={errors.email}
+            />
+            <ControledInput
+              control={control}
+              name="password"
+              icon="lock"
+              label="Senha"
+              placeholder="Segredo"
+              error={errors.password}
+              secureTextEntry
+            />
+          </KeyboardAvoidingView>
+        </TouchableWithoutFeedback>
+
+        <Button
+          variant="primary"
+          label="Alterar"
+          onPress={handleSubmit(onSubmit)}
+          marginTop="md"
+        />
       </Box>
-
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <KeyboardAvoidingView>
-          <ControledInput
-            control={control}
-            name="name"
-            icon="user"
-            label="Name"
-            placeholder="Pedro Pedrosa"
-            error={errors.name}
-          />
-
-          <ControledInput
-            control={control}
-            name="email"
-            icon="mail"
-            label="Email"
-            placeholder="pedro@online.com"
-            keyboardType="email-address"
-            error={errors.email}
-          />
-          <ControledInput
-            control={control}
-            name="password"
-            icon="lock"
-            label="Senha"
-            placeholder="Segredo"
-            error={errors.password}
-            secureTextEntry
-          />
-        </KeyboardAvoidingView>
-      </TouchableWithoutFeedback>
-
-      <Button
-        variant="primary"
-        label="Alterar"
-        onPress={handleSubmit(onSubmit)}
-        marginTop="md"
-      />
     </Container>
   );
 }

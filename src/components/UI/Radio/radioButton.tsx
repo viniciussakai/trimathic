@@ -15,10 +15,10 @@ export const RadioButton = ({ selected, value, onPress }: RadioButtonProps) => {
         <FontAwesome
           name={selected ? "circle" : "circle-o"}
           size={24}
-          color={"#2510ee"}
+          color={"#4078C2"}
         />
 
-        <Text marginLeft="md" fontSize={20}>
+        <Text marginLeft="md" fontSize={25} fontWeight="700">
           {value}
         </Text>
       </Row>

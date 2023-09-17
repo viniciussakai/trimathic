@@ -5,7 +5,7 @@ export const classSchema = tableSchema({
   columns: [
     { name: "name", type: "string" },
     { name: "unit", type: "string" },
-    { name: "is_complete", type: "boolean" },
+    { name: "is_complete", type: "string" },
 
     { name: "created_at", type: "number" },
     { name: "updated_at", type: "number" },

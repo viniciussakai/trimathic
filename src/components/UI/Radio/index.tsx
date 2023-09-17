@@ -13,7 +13,7 @@ export const RadioGroup = ({
   selected,
 }: RadioGroupProps) => {
   return (
-    <Column alignItems="flex-start">
+    <Column alignItems="flex-start" gap="md" marginBottom="lg">
       {options.map((option, i) => {
         const isSelect = selected == option;
         return (

@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 
 import { CheckPoint } from "@/components/CheckPoint";
-import { Container, Row } from "@/components/UI";
+import { HomeHero } from "@/components/HomeHero";
+import { Container, Row, Text } from "@/components/UI";
+import { UnitTitle } from "@/components/UnitTitle";
 import { database } from "@/database";
 import { Class } from "@/database/models/Class";
 import { useRouter } from "expo-router";
 import { groupBy } from "lodash";
+import { SectionList } from "react-native";
 
 const justifyContent = ["flex-end", "center", "flex-start"];
 
@@ -13,6 +16,7 @@ export default function TabLearn() {
   const router = useRouter();
   const [classes, setClasses] = useState<Class[]>();
   const [classGroup, setClassGroup] = useState([]);
+  const [lastClass, setLastClass] = useState("");
 
   const fetchClasses = async () => {
     try {
@@ -28,22 +32,37 @@ export default function TabLearn() {
   };
 
   useEffect(() => {
+    if (classes) {
+      const nextLessonIndex =
+        classes.findLastIndex((value) => value.is_complete === "verdadeiro") +
+          1 || 1;
+      const nextLesson = classes[nextLessonIndex];
+      if (nextLesson) {
+        setLastClass(nextLesson.name);
+      }
+    }
+  }, [router]);
+
+  useEffect(() => {
     fetchClasses();
   }, []);
 
   const renderLesson = ({ item, index }: { item: Class; index: number }) => {
     const content = index % 3;
     const icons = ["book-open", "trophy", "star"];
-
+    const isActive = lastClass === item.name;
     return (
       <Row
         justifyContent={justifyContent[content] as any}
         paddingHorizontal="unitSpacing"
-        padding="lg"
+        padding="sm"
       >
         <CheckPoint
+          active={isActive}
           icon={icons[content]}
-          onPress={() => router.push(`/lesson/${item.name}?id=${item.id}`)}
+          onPress={() => {
+            router.push(`/lesson/${item.name}?id=${item.id}`);
+          }}
         />
       </Row>
     );
@@ -66,7 +85,7 @@ export default function TabLearn() {
   return (
     <>
       <Container>
-        {/* <SectionList
+        <SectionList
           sections={classGroup}
           keyExtractor={(item, index) => item.id}
           ListHeaderComponent={
@@ -86,14 +105,10 @@ export default function TabLearn() {
             <UnitTitle
               title={"Unidade " + index}
               index={index}
-              description="Conceito sobre area de figuras"
+              description={title}
             />
           )}
           renderItem={renderLesson}
-        /> */}
-        <CheckPoint
-          icon={"check"}
-          onPress={() => router.push(`/lesson/circulo?id=1`)}
         />
       </Container>
     </>
