@@ -4,7 +4,7 @@
 
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/viniciussakai/trimathic">
  
-  <a href="https://github.com/tgmarinho/README-ecoleta/commits/master">
+  <a href="https://github.com/viniciussakai/trimathic">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/viniciussakai/trimathic">
   </a>
     
