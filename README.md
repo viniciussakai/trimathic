@@ -22,7 +22,7 @@
 </h1>
 
 <h4 align="center"> 
-	🚧  Trimathic -Em desenvolvimento 🚧
+	🚧  Trimathic - Concluido 🚧
 </h4>
 
 <p align="center">
@@ -37,7 +37,7 @@
 
 ## 💻 Sobre o projeto
 
-♻️ Trimathic - é uma forma de aprender de uma forma divertida atravez de demonstrações mtemáticas.
+ Trimathic - é uma forma de aprender de uma forma divertida atravez de demonstrações mtemáticas.
 
 Projeto desenvolvido durante a **TCC do Curso de Desenvolvimento de Sistema** oferecida pela [EtecVAV](https://www.etecvav.com.br).
 O TCC é uma experiência de colocar o conteúdo em prática, se propor a novos desafios, etc.
@@ -46,9 +46,9 @@ O TCC é uma experiência de colocar o conteúdo em prática, se propor a novos 
 
 ## ⚙️ Funcionalidades
 
-- [] Os usuarios podem se cadastrar e logar no aplicativo:
-- [] Os alunos tem acesso a aulas focadas no seu aprendizado:
-- [] Os usuários tem acesso ao seu progresso dentro do aplicativo
+- [X] Os usuarios podem se cadastrar e logar no aplicativo
+- [X] Os alunos tem acesso a aulas focadas no seu aprendizado
+- [X] Os usuários tem acesso ao seu progresso dentro do aplicativo
 
 ---
 ## 🎨 Layout
@@ -101,12 +101,10 @@ As seguintes ferramentas foram usadas na construção do projeto:
 -   **[Expo](https://expo.io/)**
 -   **[Expo Google Fonts](https://github.com/expo/google-fonts)**
 -   **[React Navigation](https://reactnavigation.org/)**
--   **[React Native Maps](https://github.com/react-native-community/react-native-maps)**
 -   **[Expo Constants](https://docs.expo.io/versions/latest/sdk/constants/)**
 -   **[React Native SVG](https://github.com/react-native-community/react-native-svg)**
--   **[Axios](https://github.com/axios/axios)**
--   **[Expo Location](https://docs.expo.io/versions/latest/sdk/location/)**
--   **[Expo Mail Composer](https://docs.expo.io/versions/latest/sdk/mail-composer/)**
+-    **[Emotion](https://github.com/emotion-js/emotion)**
+
 
 > Veja o arquivo  [package.json](https://github.com/viniciussakai/trimathic/package.json)
 
